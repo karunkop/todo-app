@@ -9,6 +9,7 @@ const Todos = ({ setHandleChange, setHandleRemove, setHandleClick, hover, setHov
 
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target)) {
+            setValue(title);
             setEdit(false);
         }
     };
@@ -41,7 +42,7 @@ const Todos = ({ setHandleChange, setHandleRemove, setHandleClick, hover, setHov
     const handleKeyDown = e => {
         if (e.key === "Enter") {
             if (value === "") return;
-            setHandleChange(id,e.target.value,completed);
+            setHandleChange(id, e.target.value, completed);
             setEdit(false);
         }
     };

@@ -12,6 +12,8 @@ const Board = () => {
 
     const [actualItems, setActualItems] = useState(null);
 
+    const [isCompleted, setIsCompleted] = useState(false);
+
     useEffect(() => {
         setAllTodos(todos);
 
@@ -21,6 +23,10 @@ const Board = () => {
 
             let completedTodos = todos.filter(todo => todo.completed);
             setActualItems(todos.length - completedTodos.length);
+
+            if (isCompleted) {
+                handleCompleted();
+            }
         }
     }, [todos]);
 
@@ -31,14 +37,17 @@ const Board = () => {
     const handleActive = () => {
         let activeTodos = todos.filter(todo => !todo.completed);
         setAllTodos(activeTodos);
+        setIsCompleted(false);
     };
 
     const handleAll = () => {
         setAllTodos(todos);
+        setIsCompleted(false);
     };
 
     const handleCompleted = () => {
         let completedTodos = todos.filter(todo => todo.completed);
+        setIsCompleted(true);
         setAllTodos(completedTodos);
     };
 
