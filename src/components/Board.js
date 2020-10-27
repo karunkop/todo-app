@@ -25,10 +25,11 @@ const Board = () => {
             setActualItems(todos.length - completedTodos.length);
 
             if (isCompleted) {
-                handleCompleted();
+                let completedTodos = todos.filter(todo => todo.completed);
+                setAllTodos(completedTodos);
             }
         }
-    }, [todos]);
+    }, [todos, isCompleted]);
 
     const handleHover = id => {
         setSelectedTodo(id);
